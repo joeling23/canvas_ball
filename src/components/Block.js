@@ -22,6 +22,7 @@ class Block extends React.Component {
   draw() {
     const ctx = this.context
     ctx.beginPath()
+    ctx.fillStyle="#F7C395";
     ctx.fillRect(this.x, this.y, this.width, this.height)
     ctx.closePath()
     return this

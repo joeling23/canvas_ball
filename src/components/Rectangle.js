@@ -20,8 +20,14 @@ class Rectangle extends React.Component {
 
   draw() {
     const ctx = this.context
-    ctx.rect(this.x, this.y, this.width, this.height)
-    ctx.stroke()
+    // Hexadecimal Color Red
+    ctx.fillStyle="#FF0000";
+    ctx.fillRect(this.x, this.y, this.width, this.height)
+    return this
+  }
+
+  move(){
+    this.x++
     return this
   }
 }

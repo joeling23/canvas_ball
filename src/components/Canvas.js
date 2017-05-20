@@ -54,7 +54,7 @@ class Canvas extends React.Component {
       // Start drawing
       circle.draw().move()
       block.draw().move()
-      rectangle.draw()
+      rectangle.draw().move()
       // End Drawing
       requestAnimationFrame(gameLoop)
     })

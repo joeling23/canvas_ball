@@ -37,7 +37,7 @@ class Canvas extends React.Component {
     })
     const rectangle = new Rectangle({
       context:ctx,
-      x:0,
+      x:(vw / 2) - 50,
       y:0,
       width:100,
       height:100

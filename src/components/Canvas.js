@@ -1,6 +1,6 @@
 import React from 'react'
 import Block from './Block'
-import Circle from './Block'
+import Circle from './Circle'
 
 
 
@@ -26,8 +26,8 @@ class Canvas extends React.Component {
       vh: vh
     })
     const circle = new Circle({
-      x: 50,
-      y: 50,
+      x: 100,
+      y: 100,
       radius: 100,
       context: ctx,
       start: vw,

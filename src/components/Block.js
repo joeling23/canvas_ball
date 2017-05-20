@@ -7,7 +7,6 @@ import React from 'react'
 class Block extends React.Component {
   constructor(props) {
         super(props)
-    log(props)
     this.x = this.props.x
     this.y = this.props.y
     this.dy = 2
@@ -27,14 +26,12 @@ class Block extends React.Component {
   }
 
   move() {
-      log(this.vh)
       if(this.y + this.dy > this.vh-this.y || this.y + this.dy < this.height) {
         this.dy = -this.dy;
     }
-    log(this.y)
     this.y += this.dy
     return this
   }
 }
 
-module.exports = Block
+export default Block

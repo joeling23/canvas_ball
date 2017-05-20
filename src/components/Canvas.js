@@ -1,5 +1,7 @@
 import React from 'react'
 import Block from './Block'
+import Circle from './Block'
+
 
 
 
@@ -23,10 +25,20 @@ class Canvas extends React.Component {
       vw: vw,
       vh: vh
     })
+    const circle = new Circle({
+      x: 50,
+      y: 50,
+      radius: 100,
+      context: ctx,
+      start: vw,
+      end: vh,
+      clockwise: true
+    })
     requestAnimationFrame(function gameLoop() {
       ctx.clearRect(0, 0, vw, vh)
 
       block.draw().move()
+      circle.draw()
 
       requestAnimationFrame(gameLoop)
     })

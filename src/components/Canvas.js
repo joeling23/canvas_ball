@@ -7,8 +7,8 @@ import Rectangle from './Rectangle'
 
 
 class Canvas extends React.Component {
-  componentDidMount() {
 
+  componentDidMount() {
     this.updateCanvas()
   }
   updateCanvas() {
@@ -31,8 +31,8 @@ class Canvas extends React.Component {
       y: 100,
       radius: 50,
       context: ctx,
-      start: vw,
-      end: vh,
+      start: 0,
+      end: Math.PI * 2,
       clockwise: true
     })
     const rectangle = new Rectangle({
@@ -44,12 +44,12 @@ class Canvas extends React.Component {
     })
 
     requestAnimationFrame(function gameLoop() {
+
+
       ctx.clearRect(0, 0, vw, vh)
-
+      circle.draw().move()
       block.draw().move()
-      circle.draw()
       rectangle.draw()
-
       requestAnimationFrame(gameLoop)
     })
   }

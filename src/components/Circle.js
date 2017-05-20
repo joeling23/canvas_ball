@@ -20,8 +20,14 @@ class Circle extends React.Component {
 
   draw() {
     const ctx = this.context
+    ctx.beginPath()
     ctx.arc(this.x, this.y, this.radius, this.start, this.end, this.clockwise)
-    ctx.fill()
+    ctx.stroke()
+    ctx.closePath()
+    return this
+  }
+  move(){
+    this.x++
     return this
   }
 }

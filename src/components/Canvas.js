@@ -2,20 +2,23 @@ import React from 'react'
 import Block from './Block'
 import Circle from './Circle'
 import Rectangle from './Rectangle'
+import MouseEvent from '../inputs/Mouse'
+const mouse = new MouseEvent()
 
 
 
 
 class Canvas extends React.Component {
-
   componentDidMount() {
     this.updateCanvas()
   }
   updateCanvas() {
     const ctx = this.refs.canvas.getContext('2d')
     const canvas = this.refs.canvas
-    const vw = canvas.width  = window.innerWidth;
-    const vh = canvas.height = window.innerHeight;
+    const vw = canvas.width  = window.innerWidth
+    const vh = canvas.height = window.innerHeight
+    
+    canvas.addEventListener('mousemove', mouse.move, false);
 
     const block = new Block({
       x: 10,
@@ -26,6 +29,7 @@ class Canvas extends React.Component {
       vw: vw,
       vh: vh
     })
+    
     const circle = new Circle({
       x: 160,
       y: 100,
@@ -42,6 +46,7 @@ class Canvas extends React.Component {
       width:100,
       height:100
     })
+    
 
     requestAnimationFrame(function gameLoop() {
 

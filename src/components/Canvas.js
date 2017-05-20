@@ -6,8 +6,8 @@ import Circle from './Circle'
 
 
 class Canvas extends React.Component {
+  
   componentDidMount() {
-    
     this.updateCanvas()
   }
   updateCanvas() {
@@ -36,9 +36,9 @@ class Canvas extends React.Component {
     })
     requestAnimationFrame(function gameLoop() {
       ctx.clearRect(0, 0, vw, vh)
-
-      block.draw().move()
       circle.draw()
+      //block.draw().move()
+      
 
       requestAnimationFrame(gameLoop)
     })

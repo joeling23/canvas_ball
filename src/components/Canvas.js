@@ -30,16 +30,16 @@ class Canvas extends React.Component {
       y: 100,
       radius: 100,
       context: ctx,
-      start: vw,
-      end: vh,
+      start: 0,
+      end: Math.PI * 2,
       clockwise: true
     })
     requestAnimationFrame(function gameLoop() {
-      ctx.clearRect(0, 0, vw, vh)
-      circle.draw()
-      //block.draw().move()
       
-
+      
+      ctx.clearRect(0, 0, vw, vh)
+      circle.draw().move()
+      block.draw().move()
       requestAnimationFrame(gameLoop)
     })
   }

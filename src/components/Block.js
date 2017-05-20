@@ -21,15 +21,14 @@ class Block extends React.Component {
 
   draw() {
     const ctx = this.context
+    ctx.beginPath()
     ctx.fillRect(this.x, this.y, this.width, this.height)
+    ctx.closePath()
     return this
   }
 
   move() {
-      if(this.y + this.dy > this.vh-this.y || this.y + this.dy < this.height) {
-        this.dy = -this.dy;
-    }
-    this.y += this.dy
+    this.y++
     return this
   }
 }

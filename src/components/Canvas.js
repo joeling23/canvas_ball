@@ -2,6 +2,7 @@ import React from 'react'
 import Block from './Block'
 import Circle from './Circle'
 import Rectangle from './Rectangle'
+import BathroomMan from './BathroomMan/BathroomMan'
 import MouseEvent from '../inputs/Mouse'
 
 
@@ -11,7 +12,11 @@ class Canvas extends React.Component {
   componentDidMount() {
     this.updateCanvas()
   }
+  componentDidUpdate(){
+    this.updateCanvas()
+  }
   updateCanvas() {
+    const audio = new (window.AudioContext || window.webkitAudioContext)()
     const ctx = this.refs.canvas.getContext('2d')
     const canvas = this.refs.canvas
     const mouse = new MouseEvent(canvas)
@@ -19,6 +24,8 @@ class Canvas extends React.Component {
     const vh = canvas.height = window.innerHeight
     
     mouse.move().click()
+    
+    const hero = new BathroomMan(ctx)
     
 
     const block = new Block({
@@ -52,9 +59,11 @@ class Canvas extends React.Component {
     requestAnimationFrame(function gameLoop() {
       ctx.clearRect(0, 0, vw, vh)
       // Start drawing
-      circle.draw().move().followMouse(mouse.getCoordinates())
+      circle.draw().followMouse(mouse.getCoordinates()).move()
       block.draw().move()
       rectangle.draw().move()
+      hero.draw()
+
       // End Drawing
       requestAnimationFrame(gameLoop)
     })

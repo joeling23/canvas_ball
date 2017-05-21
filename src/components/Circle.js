@@ -6,7 +6,7 @@ import React from 'react'
 
 class Circle extends React.Component {
   constructor(props) {
-        super(props)
+    super(props)
     log(props)
     this.context = this.props.context
     this.x = this.props.x
@@ -15,7 +15,7 @@ class Circle extends React.Component {
     this.start = this.props.start
     this.end = this.props.end
     this.clockwise = this.props.clockwise
-    
+
   }
 
   draw() {
@@ -26,9 +26,19 @@ class Circle extends React.Component {
     ctx.closePath()
     return this
   }
-  move(){
-    this.x++
+  move(mouse) {
+    this.x += 0.25
+
     return this
+  }
+  followMouse(mouse) {
+    if (mouse) {
+      this.x = mouse.x
+      this.y = mouse.y
+    }
+
+    return this
+
   }
 }
 

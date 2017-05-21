@@ -30,6 +30,7 @@ class Rectangle extends React.Component {
 
   move(){
     this.x++
+    this.y += 2
     return this
   }
 }

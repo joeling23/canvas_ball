@@ -32,7 +32,7 @@ class Canvas extends React.Component {
     })
     
     const circle = new Circle({
-      x: 160,
+      x: 100,
       y: 100,
       radius: 50,
       context: ctx,
@@ -52,7 +52,7 @@ class Canvas extends React.Component {
     requestAnimationFrame(function gameLoop() {
       ctx.clearRect(0, 0, vw, vh)
       // Start drawing
-      circle.draw().move()
+      circle.draw().move().followMouse(mouse.getCoordinates())
       block.draw().move()
       rectangle.draw().move()
       // End Drawing

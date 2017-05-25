@@ -1,9 +1,5 @@
 import React from 'react'
-import Block from './Block'
-import Circle from './Circle'
-import Rectangle from './Rectangle'
-import BathroomMan from './BathroomMan/BathroomMan'
-import MouseEvent from '../inputs/Mouse'
+import Circulo from './Circle'
 
 
 
@@ -22,47 +18,39 @@ class Canvas extends React.Component {
     const mouse = new MouseEvent(canvas)
     const vw = canvas.width  = window.innerWidth
     const vh = canvas.height = window.innerHeight
-    
-    mouse.move().click()
-    
-    const hero = new BathroomMan(ctx)
-    
+    const bolaCanasta = []
+    const colors = [
+       '#0E2759',
+       '#37648C',
+       '#F2B56B',
+       '#F26430',
+       '#D96666',
+    ]
+   
+    for (let i = 0; i < 80; i++) {
+       const radius = randomIntFromRange(4, 30)
+      const bola_props = {
+      dx: randomIntFromRange(-2, 2),
+      dy: randomIntFromRange(-2, 2),
+      ch: vh,
+      cw: vw,
+      x: randomIntFromRange(radius, vw - radius),
+      y: randomIntFromRange(0, vh - radius),
+      radius: radius,
+      color: randomColor(colors),
+      context: ctx
+    }
+      bolaCanasta.push(new Circulo(bola_props))
+    }
 
-    const block = new Block({
-      x: 10,
-      y: 10,
-      width: vw / 2,
-      height: 10,
-      context: ctx,
-      vw: vw,
-      vh: vh
-    })
+    console.log(bolaCanasta)
     
-    const circle = new Circle({
-      x: 100,
-      y: 100,
-      radius: 50,
-      context: ctx,
-      start: 0,
-      end: Math.PI * 2,
-      clockwise: true
-    })
-    const rectangle = new Rectangle({
-      context:ctx,
-      x:(vw / 2) - 50,
-      y:40,
-      width:100,
-      height:100
-    })
-    
-
     requestAnimationFrame(function gameLoop() {
       ctx.clearRect(0, 0, vw, vh)
       // Start drawing
-      circle.draw().followMouse(mouse.getCoordinates()).move()
-      block.draw().move()
-      rectangle.draw().move()
-      hero.draw()
+ for (let i = 0; i< bolaCanasta.length; i++) {
+  bolaCanasta[i].draw()
+ }
 
       // End Drawing
       requestAnimationFrame(gameLoop)
@@ -71,10 +59,15 @@ class Canvas extends React.Component {
   render() {
     return (
       <canvas ref="canvas"/>
-    );
+    )
   }
 }
 
 
-
+function randomIntFromRange(min,max) {
+  return Math.floor(Math.random() * (max - min + 1) + min)
+}
+function randomColor(colors) {
+  return colors[Math.floor(Math.random() * colors.length)]
+}
 export default Canvas

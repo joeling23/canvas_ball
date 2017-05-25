@@ -2,11 +2,16 @@ const log = i => console.log(i) // log(info) instead of console.log(info)
 import React from 'react'
 import Head from './Head'
 import Body from './Body'
+ const body = new Image()
+    body.src = Body
+    log(body)
+    body.width = '100'
+    body.height = '100'
 
 
 
 
-class BathroomMan extends React.Component {
+class Panda extends React.Component {
   constructor(props) {
         super(props)
     log(props)
@@ -16,20 +21,22 @@ class BathroomMan extends React.Component {
 
   }
 
+
   draw() {
     const head = new Path2D(Head);
-    const body = new Path2D(Body);
+   
+
+
     const ctx = this.context
-    ctx.beginPath()
+
     ctx.save()
-    ctx.fillStyle="#000000"
-    ctx.scale(0.2, 0.2)
-    ctx.stroke(head)
-    ctx.stroke(body)
-    ctx.fill(head)
-    ctx.fill(body)
+  
+      ctx.drawImage(body, 0, 0)
+    
+    
+    //ctx.stroke(body)
     ctx.restore()
-    ctx.closePath()
+
     return this
   }
 
@@ -41,4 +48,4 @@ class BathroomMan extends React.Component {
   
 }
 
-export default BathroomMan
+export default Panda
